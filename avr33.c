@@ -2,7 +2,7 @@
 This program was created by the
 CodeWizardAVR V3.12 Advanced
 Automatic Program Generator
-© Copyright 1998-2014 Pavel Haiduc, HP InfoTech s.r.l.
+Â© Copyright 1998-2014 Pavel Haiduc, HP InfoTech s.r.l.
 http://www.hpinfotech.com
 
 Project : 
@@ -24,10 +24,6 @@ Data Stack size         : 1024
 #include <mega64.h>
 
 #include <delay.h>
-
-// Declare your global variables here
-
-// Standard Input/Output functions
 #include <stdio.h>
 
 // Voltage Reference: AVCC pin
@@ -37,11 +33,8 @@ Data Stack size         : 1024
 unsigned int read_adc(unsigned char adc_input)
 {
 ADMUX=adc_input | ADC_VREF_TYPE;
-// Delay needed for the stabilization of the ADC input voltage
 delay_us(10);
-// Start the AD conversion
 ADCSRA|=(1<<ADSC);
-// Wait for the AD conversion to complete
 while ((ADCSRA & (1<<ADIF))==0);
 ADCSRA|=(1<<ADIF);
 return ADCW;
@@ -49,7 +42,6 @@ return ADCW;
 
 void main(void)
 {
-// Declare your local variables here
  char c;
  char str[3];
  int temp1, temp2;
@@ -228,7 +220,6 @@ TWCR=(0<<TWEA) | (0<<TWSTA) | (0<<TWSTO) | (0<<TWEN) | (0<<TWIE);
 PORTB = 0x00;
 while (1)
       {
-      // Place your code here
       gets(str, 3);
       if (str[0] == 'o' & str[1] == 'n' & str[2] == '1')
       {
